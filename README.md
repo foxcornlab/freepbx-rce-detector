@@ -36,6 +36,16 @@ python3 freepbx_detector.py logcheck /var/log/apache2/access.log
 
 Flags requests to `ajax.php` carrying `brand=` plus `SQLi` markers (`EXTRACTVALUE`, `UNION SELECT`, `INSERT INTO`, stacked queries). Exits `1` when it finds hits, so it drops straight into monitoring.
 
+## Tests
+
+`test_detector.py` runs the whole verdict matrix against a local mock `FreePBX` admin page, plus `logcheck` true/false positives. Nothing leaves the box:
+
+```shell
+python3 test_detector.py
+```
+
+`12` tests, all green.
+
 ## Remediation
 
 1. Update `Endpoint Manager` to `15.0.66` / `16.0.89` / `17.0.3`.
